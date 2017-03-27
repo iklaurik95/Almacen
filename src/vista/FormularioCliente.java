@@ -17,7 +17,7 @@ import javax.swing.JComboBox;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class BezeroFormulario extends JDialog {
+public class FormularioCliente extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
 	private JTextField textField_nombre;
@@ -31,7 +31,7 @@ public class BezeroFormulario extends JDialog {
 	 */
 	public static void main(String[] args) {
 		try {
-			BezeroFormulario dialog = new BezeroFormulario();
+			FormularioCliente dialog = new FormularioCliente();
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 			dialog.setVisible(true);
 		} catch (Exception e) {
@@ -42,7 +42,7 @@ public class BezeroFormulario extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public BezeroFormulario() {
+	public FormularioCliente() {
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));

@@ -11,14 +11,14 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 //TODO claseari izena aldatu BigarrenLehioa beharrean BezeroKudeatzailea
-public class BigarrenLeihoa extends JDialog {
+public class GestorCliente extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
 
 	/**
 	 * Create the dialog.
 	 */
-	public BigarrenLeihoa() {
+	public GestorCliente() {
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));

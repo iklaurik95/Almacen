@@ -10,7 +10,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 
-public class ProduktuKudeaketa extends JDialog {
+public class GestorProducto extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
 
@@ -19,7 +19,7 @@ public class ProduktuKudeaketa extends JDialog {
 	 */
 	public static void main(String[] args) {
 		try {
-			ProduktuKudeaketa dialog = new ProduktuKudeaketa();
+			GestorProducto dialog = new GestorProducto();
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 			dialog.setVisible(true);
 		} catch (Exception e) {
@@ -30,7 +30,7 @@ public class ProduktuKudeaketa extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public ProduktuKudeaketa() {
+	public GestorProducto() {
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
