@@ -7,49 +7,55 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import controlador.ProductoControlador;
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class GestorProducto extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
+	private ProductoControlador productoControlador;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		try {
-			GestorProducto dialog = new GestorProducto();
-			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-			dialog.setVisible(true);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
-	/**
-	 * Create the dialog.
-	 */
-	public GestorProducto() {
+	
+	public GestorProducto(Principal principal,boolean modal) {
+		super(principal,modal);
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		
-		JButton produktuBerria = new JButton("Produktu berria");
+		JButton btnProductoNuevo = new JButton("Producto Nuevo");
+		btnProductoNuevo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+			}
+		});
 		GroupLayout gl_contentPanel = new GroupLayout(contentPanel);
 		gl_contentPanel.setHorizontalGroup(
 			gl_contentPanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPanel.createSequentialGroup()
 					.addGap(161)
-					.addComponent(produktuBerria))
+					.addComponent(btnProductoNuevo))
 		);
 		gl_contentPanel.setVerticalGroup(
 			gl_contentPanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPanel.createSequentialGroup()
 					.addGap(79)
-					.addComponent(produktuBerria))
+					.addComponent(btnProductoNuevo))
 		);
 		contentPanel.setLayout(gl_contentPanel);
+	}
+	
+	public ProductoControlador getProductoControlador() {
+		return productoControlador;
+	}
+
+
+	public void setProductoControlador(ProductoControlador productoControlador) {
+		this.productoControlador = productoControlador;
 	}
 }

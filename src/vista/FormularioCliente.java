@@ -7,6 +7,10 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import controlador.ClienteControlador;
+import main.Main;
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
@@ -20,36 +24,23 @@ import java.awt.event.ActionEvent;
 public class FormularioCliente extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
-	private JTextField textField_nombre;
-	private JTextField textField;
-	private JTextField textField_telefono;
-	private JTextField textField_direccion;
-	private JTextField textField_codPostal;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		try {
-			FormularioCliente dialog = new FormularioCliente();
-			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-			dialog.setVisible(true);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
-	/**
-	 * Create the dialog.
-	 */
-	public FormularioCliente() {
+	private JTextField textoId;
+	private JTextField textoNombre;
+	private JTextField textoTelefono;
+	private JTextField textoDireccion;
+	private JTextField textoCodPostal;
+	private ClienteControlador clienteControlador;
+	
+	
+	public FormularioCliente(GestorCliente padre, boolean modal) {
+		super(padre,modal);
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		
-		JLabel label_id = new JLabel("id");
-		label_id.setHorizontalAlignment(SwingConstants.CENTER);
+		JLabel lblId = new JLabel("Id");
+		lblId.setHorizontalAlignment(SwingConstants.CENTER);
 		
 		JLabel lblNombre = new JLabel("nombre");
 		lblNombre.setHorizontalAlignment(SwingConstants.CENTER);
@@ -57,30 +48,30 @@ public class FormularioCliente extends JDialog {
 		JLabel lblTelefono = new JLabel("telefono");
 		lblTelefono.setHorizontalAlignment(SwingConstants.CENTER);
 		
-		JLabel label_direccion = new JLabel("direccion");
-		label_direccion.setHorizontalAlignment(SwingConstants.CENTER);
+		JLabel lblDireccion = new JLabel("direccion");
+		lblDireccion.setHorizontalAlignment(SwingConstants.CENTER);
 		
-		JLabel label_codPostal = new JLabel("codPostal");
-		label_codPostal.setHorizontalAlignment(SwingConstants.CENTER);
+		JLabel lblCodPostal = new JLabel("codPostal");
+		lblCodPostal.setHorizontalAlignment(SwingConstants.CENTER);
 		
-		textField_nombre = new JTextField();
-		textField_nombre.setHorizontalAlignment(SwingConstants.CENTER);
-		textField_nombre.setColumns(10);
+		textoId = new JTextField();
+		textoId.setHorizontalAlignment(SwingConstants.CENTER);
+		textoId.setColumns(10);
 		
-		textField = new JTextField();
-		textField.setHorizontalAlignment(SwingConstants.CENTER);
-		textField.setColumns(10);
+		textoNombre = new JTextField();
+		textoNombre.setHorizontalAlignment(SwingConstants.CENTER);
+		textoNombre.setColumns(10);
 		
-		textField_telefono = new JTextField();
-		textField_telefono.setColumns(10);
+		textoTelefono = new JTextField();
+		textoTelefono.setColumns(10);
 		
-		textField_direccion = new JTextField();
-		textField_direccion.setColumns(10);
+		textoDireccion = new JTextField();
+		textoDireccion.setColumns(10);
 		
-		textField_codPostal = new JTextField();
-		textField_codPostal.setColumns(10);
+		textoCodPostal = new JTextField();
+		textoCodPostal.setColumns(10);
 		
-		JComboBox comboBox_Bezero = new JComboBox();
+		JComboBox listaClientes = new JComboBox();
 		GroupLayout gl_contentPanel = new GroupLayout(contentPanel);
 		gl_contentPanel.setHorizontalGroup(
 			gl_contentPanel.createParallelGroup(Alignment.LEADING)
@@ -89,48 +80,48 @@ public class FormularioCliente extends JDialog {
 					.addGroup(gl_contentPanel.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_contentPanel.createSequentialGroup()
 							.addGroup(gl_contentPanel.createParallelGroup(Alignment.LEADING)
-								.addComponent(label_codPostal)
-								.addComponent(label_direccion)
+								.addComponent(lblCodPostal)
+								.addComponent(lblDireccion)
 								.addGroup(gl_contentPanel.createParallelGroup(Alignment.TRAILING, false)
-									.addComponent(label_id, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+									.addComponent(lblId, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 									.addComponent(lblNombre, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 								.addComponent(lblTelefono))
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addGroup(gl_contentPanel.createParallelGroup(Alignment.LEADING)
-								.addComponent(textField_telefono, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE)
-								.addComponent(textField_codPostal, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE)
-								.addComponent(textField_direccion, GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE)
-								.addComponent(textField, GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE)
-								.addComponent(textField_nombre, GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE))
+								.addComponent(textoTelefono, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE)
+								.addComponent(textoCodPostal, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE)
+								.addComponent(textoDireccion, GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE)
+								.addComponent(textoNombre, GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE)
+								.addComponent(textoId, GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE))
 							.addContainerGap())
 						.addGroup(Alignment.TRAILING, gl_contentPanel.createSequentialGroup()
-							.addComponent(comboBox_Bezero, GroupLayout.PREFERRED_SIZE, 209, GroupLayout.PREFERRED_SIZE)
+							.addComponent(listaClientes, GroupLayout.PREFERRED_SIZE, 209, GroupLayout.PREFERRED_SIZE)
 							.addGap(103))))
 		);
 		gl_contentPanel.setVerticalGroup(
 			gl_contentPanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPanel.createSequentialGroup()
-					.addComponent(comboBox_Bezero, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addComponent(listaClientes, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 					.addGap(10)
 					.addGroup(gl_contentPanel.createParallelGroup(Alignment.BASELINE)
-						.addComponent(label_id)
-						.addComponent(textField_nombre, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(lblId)
+						.addComponent(textoId, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_contentPanel.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblNombre)
-						.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(textoNombre, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_contentPanel.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblTelefono)
-						.addComponent(textField_telefono, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(textoTelefono, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_contentPanel.createParallelGroup(Alignment.BASELINE)
-						.addComponent(label_direccion)
-						.addComponent(textField_direccion, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(lblDireccion)
+						.addComponent(textoDireccion, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_contentPanel.createParallelGroup(Alignment.BASELINE)
-						.addComponent(label_codPostal)
-						.addComponent(textField_codPostal, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(lblCodPostal)
+						.addComponent(textoCodPostal, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addContainerGap(64, Short.MAX_VALUE))
 		);
 		contentPanel.setLayout(gl_contentPanel);
@@ -139,24 +130,43 @@ public class FormularioCliente extends JDialog {
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
-				JButton okButton = new JButton("OK");
-				okButton.addActionListener(new ActionListener() {
+				JButton btnInsertar = new JButton("Insertar");
+				btnInsertar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
+						clienteControlador.insertarCliente(textoId.getText(),textoNombre.getText(),textoDireccion.getText(),
+						textoCodPostal.getText(),textoTelefono.getText());
+						limpiarFormulario();
 					}
 				});
-				okButton.setActionCommand("OK");
-				buttonPane.add(okButton);
-				getRootPane().setDefaultButton(okButton);
+				btnInsertar.setActionCommand("Insertar");
+				buttonPane.add(btnInsertar);
+				getRootPane().setDefaultButton(btnInsertar);
 			}
 			{
-				JButton cancelButton = new JButton("Cancel");
-				cancelButton.addActionListener(new ActionListener() {
+				JButton btnCancelar = new JButton("Cancelar");
+				btnCancelar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
+						clienteControlador.cerrarFormularioCliente();
 					}
 				});
-				cancelButton.setActionCommand("Cancel");
-				buttonPane.add(cancelButton);
+				btnCancelar.setActionCommand("Cancelar");
+				buttonPane.add(btnCancelar);
 			}
 		}
+	}
+	protected void limpiarFormulario() {
+		// TODO Auto-generated method stub
+		textoId.setText(null);
+		textoNombre.setText(null);
+		textoDireccion.setText(null);
+		textoCodPostal.setText(null);
+		textoTelefono.setText(null);
+	}
+	public ClienteControlador getClienteControlador() {
+		return clienteControlador;
+	}
+
+	public void setClienteControlador(ClienteControlador clienteControlador) {
+		this.clienteControlador = clienteControlador;
 	}
 }

@@ -6,34 +6,37 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import controlador.ClienteControlador;
+
 import javax.swing.JLabel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-//TODO claseari izena aldatu BigarrenLehioa beharrean BezeroKudeatzailea
+
 public class GestorCliente extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
-
-	/**
-	 * Create the dialog.
-	 */
-	public GestorCliente() {
+	private ClienteControlador clienteControlador;
+	
+	public GestorCliente(Principal principal,boolean modal) {
+		super(principal,modal);
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
 		
-		JButton btnBezeroak = new JButton("Bezeroak");
-		btnBezeroak.addActionListener(new ActionListener() {
+		JButton btnClientes = new JButton("Clientes");
+		btnClientes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				clienteControlador.abrirFormularioCliente();
 			}
 		});
-		btnBezeroak.setBounds(133, 86, 137, 23);
-		contentPanel.add(btnBezeroak);
+		btnClientes.setBounds(133, 86, 137, 23);
+		contentPanel.add(btnClientes);
 		
-		JButton btnConsulta = new JButton("Kontsulta");
+		JButton btnConsulta = new JButton("Consulta");
 		btnConsulta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -41,8 +44,15 @@ public class GestorCliente extends JDialog {
 		btnConsulta.setBounds(133, 146, 137, 23);
 		contentPanel.add(btnConsulta);
 		
-		JLabel lblBigarrenLeihoa = new JLabel("Bigarren Leihoa :");
-		lblBigarrenLeihoa.setBounds(126, 30, 144, 20);
-		contentPanel.add(lblBigarrenLeihoa);
+		JLabel lblGestorCliente = new JLabel("Gestor Cliente");
+		lblGestorCliente.setBounds(126, 30, 144, 20);
+		contentPanel.add(lblGestorCliente);
+	}
+	public ClienteControlador getClienteControlador() {
+		return clienteControlador;
+	}
+
+	public void setClienteControlador(ClienteControlador clienteControlador) {
+		this.clienteControlador = clienteControlador;
 	}
 }

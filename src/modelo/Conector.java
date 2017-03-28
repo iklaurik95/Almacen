@@ -1,6 +1,3 @@
-/**
- * 
- */
 package modelo;
 
 import java.sql.Connection;
@@ -16,7 +13,7 @@ public class Conector {
 		
 			try {
 				Class.forName("com.mysql.jdbc.Driver");
-				this.conexion = DriverManager.getConnection("jdbc:mysql://" + Config.HOST + "/" + Config.BBDD + "," + Config.USERNAME + "," + Config.PASSWORD);
+				this.conexion = DriverManager.getConnection("jdbc:mysql://" + Config.HOST + "/" + Config.BBDD, Config.USERNAME, Config.PASSWORD);
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

@@ -6,8 +6,12 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import main.Main;
+
 
 public class ProductoModelo extends Conector{
+	
+	private Main main;
 	
 	public ArrayList<Producto> selectAll() {
 		//TODO produkutu guztiak itzuliko ditu

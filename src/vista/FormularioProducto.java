@@ -6,6 +6,9 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import controlador.ProductoControlador;
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
@@ -20,24 +23,11 @@ public class FormularioProducto extends JDialog {
 	private JTextField textFieldProveedor;
 	private JTextField textFieldNombre;
 	private JTextField textFieldPrecio;
+	private ProductoControlador productoControlador;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		try {
-			FormularioProducto dialog = new FormularioProducto();
-			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-			dialog.setVisible(true);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
-	/**
-	 * Create the dialog.
-	 */
-	public FormularioProducto() {
+		
+	public FormularioProducto(GestorProducto padre,boolean modal) {
+		super(padre,modal);
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -107,26 +97,34 @@ public class FormularioProducto extends JDialog {
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
-				JButton okButton = new JButton("Guardar");
-				okButton.addActionListener(new ActionListener() {
+				JButton btnInsertar = new JButton("Insertar");
+				btnInsertar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
 						//TODO
 					}
 				});
-				okButton.setActionCommand("OK");
-				buttonPane.add(okButton);
-				getRootPane().setDefaultButton(okButton);
+				btnInsertar.setActionCommand("Guardar");
+				buttonPane.add(btnInsertar);
+				getRootPane().setDefaultButton(btnInsertar);
 			}
 			{
-				JButton cancelButton = new JButton("Cancel");
+				JButton cancelButton = new JButton("Cancelar");
 				cancelButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						//TODO
 					}
 				});
-				cancelButton.setActionCommand("Cancel");
+				cancelButton.setActionCommand("Cancelar");
 				buttonPane.add(cancelButton);
 			}
 		}
+	}
+	
+	public ProductoControlador getProductoControlador() {
+		return productoControlador;
+	}
+
+	public void setProductoControlador(ProductoControlador productoControlador) {
+		this.productoControlador = productoControlador;
 	}
 }
