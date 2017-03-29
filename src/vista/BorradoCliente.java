@@ -15,6 +15,8 @@ import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JComboBox;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.awt.event.ActionEvent;
 
 public class BorradoCliente extends JDialog {
@@ -26,6 +28,7 @@ public class BorradoCliente extends JDialog {
 	private JTextField textoDireccion;
 	private JTextField textoCodPostal;
 	private JTextField textoTelefono;
+	private JComboBox listaClientes;
 
 	
 	/**
@@ -88,11 +91,11 @@ public class BorradoCliente extends JDialog {
 		lblTelefono.setBounds(63, 172, 46, 14);
 		contentPanel.add(lblTelefono);
 		
-		JComboBox listaClientes = new JComboBox();
+		listaClientes = new JComboBox();
 		listaClientes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(listaClientes.getSelectedIndex() == -1){
-					limpiarFormulario();
+					limpiarBorradoCliente();
 				}else{
 					String datosCliente = (String) listaClientes.getSelectedItem();
 					if(datosCliente != null){
@@ -113,26 +116,31 @@ public class BorradoCliente extends JDialog {
 				JButton btnBorrar = new JButton("Borrar");
 				btnBorrar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
-						
+						clienteControlador.eliminarCliente();
 					}
 				});
-				btnBorrar.setActionCommand("OK");
+				btnBorrar.setActionCommand("Borrar");
 				buttonPane.add(btnBorrar);
 				getRootPane().setDefaultButton(btnBorrar);
 			}
 			{
-				JButton cancelButton = new JButton("Cancel");
-				cancelButton.setActionCommand("Cancel");
+				JButton cancelButton = new JButton("Cancelar");
+				cancelButton.setActionCommand("Cancelar");
 				buttonPane.add(cancelButton);
 			}
 		}
 	}
 	
-	protected void limpiarFormulario() {
+	protected void limpiarBorradoCliente() {
 		// TODO Auto-generated method stub
+		textoId.setText(null);
+		textoNombre.setText(null);
+		textoDireccion.setText(null);
+		textoCodPostal.setText(null);
+		textoTelefono.setText(null);
 		
 	}
-
+	
 	public ClienteControlador getClienteControlador() {
 		return clienteControlador;
 	}
@@ -147,5 +155,13 @@ public class BorradoCliente extends JDialog {
 		textoDireccion.setText(cliente.getDireccion());
 		textoCodPostal.setText(cliente.getCodPostal());
 		textoTelefono.setText(cliente.getTelefono());
+	}
+	public void rellenarListaClientes(ArrayList clientes){
+		Iterator<Cliente> iterator = clientes.iterator();
+		while(iterator.hasNext()){
+			Cliente cliente = iterator.next();
+			listaClientes.addItem(cliente.getId() + ": " + cliente.getNombre());
+		}
+		listaClientes.setSelectedIndex(-1);
 	}
 }

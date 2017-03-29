@@ -45,7 +45,9 @@ public class Main {
 		clienteControlador.setGestorCliente(gestorCliente);
 		clienteControlador.setFormularioCliente(formularioCliente);
 		clienteControlador.setBorradoCliente(borradoCliente);
-		
+		productoControlador.setPrincipal(principal);
+		productoControlador.setFormularioProducto(formularioProducto);
+		productoControlador.setGestorProducto(gestorProducto);
 		
 		
 		principal.setVisible(true);

@@ -170,4 +170,6 @@ public class FormularioCliente extends JDialog {
 	public void setClienteControlador(ClienteControlador clienteControlador) {
 		this.clienteControlador = clienteControlador;
 	}
+	
+	
 }
