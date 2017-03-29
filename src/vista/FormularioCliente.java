@@ -30,6 +30,7 @@ public class FormularioCliente extends JDialog {
 	private JTextField textoDireccion;
 	private JTextField textoCodPostal;
 	private ClienteControlador clienteControlador;
+	private JComboBox listaClientes;
 	
 	
 	public FormularioCliente(GestorCliente padre, boolean modal) {
@@ -71,7 +72,7 @@ public class FormularioCliente extends JDialog {
 		textoCodPostal = new JTextField();
 		textoCodPostal.setColumns(10);
 		
-		JComboBox listaClientes = new JComboBox();
+		listaClientes = new JComboBox();
 		GroupLayout gl_contentPanel = new GroupLayout(contentPanel);
 		gl_contentPanel.setHorizontalGroup(
 			gl_contentPanel.createParallelGroup(Alignment.LEADING)

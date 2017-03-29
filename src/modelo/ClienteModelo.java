@@ -1,6 +1,3 @@
-/**
- * 
- */
 package modelo;
 
 
@@ -9,14 +6,10 @@ import java.sql.Statement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-import main.Main;
 
 
 public class ClienteModelo extends Conector{
 	
-	private Main main;
-
-
 	public ArrayList<Cliente> selectAll(){
 		
 		ArrayList<Cliente> clientes = new ArrayList<Cliente>();
@@ -33,8 +26,18 @@ public class ClienteModelo extends Conector{
 	}
 	
 
-	public Cliente select(int id) {
-		
+	public Cliente select(String idCliente) {
+		try {
+			Statement st = this.conexion.createStatement();
+			ResultSet rs = st.executeQuery("select * from clientes where id='" + idCliente + "'");
+			rs.next();
+			Cliente cliente = new Cliente((idCliente), rs.getString("nombre"), rs.getString("direccion"),
+									rs.getString("codPostal"), rs.getString("telefono"));
+			return cliente;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return null;
 	}
 
@@ -55,6 +58,17 @@ public class ClienteModelo extends Conector{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	public void delete(String idCliente) {
+		try {
+			Statement st = super.getConexion().createStatement();
+			st.execute("DELETE FROM clientes " + "WHERE id= ('" + idCliente + "')");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 	
 	}

@@ -1,7 +1,10 @@
  package controlador;
 
+import java.util.ArrayList;
+
 import modelo.Cliente;
 import modelo.ClienteModelo;
+import vista.BorradoCliente;
 import vista.FormularioCliente;
 import vista.GestorCliente;
 import vista.Principal;
@@ -11,10 +14,17 @@ public class ClienteControlador {
 		
 	private Principal principal;
 	private ClienteModelo clienteModelo;
-	private FormularioCliente clienteFormulario;
+	private FormularioCliente formularioCliente;
 	private GestorCliente gestorCliente;
+	private BorradoCliente borradoCliente;
 	
 	
+	public BorradoCliente getBorradoCliente() {
+		return borradoCliente;
+	}
+	public void setBorradoCliente(BorradoCliente borradoCliente) {
+		this.borradoCliente = borradoCliente;
+	}
 	public Principal getPrincipal() {
 		return principal;
 	}
@@ -27,12 +37,14 @@ public class ClienteControlador {
 	public void setClienteModelo(ClienteModelo clienteModelo) {
 		this.clienteModelo = clienteModelo;
 	}
-	public FormularioCliente getClienteFormulario() {
-		return clienteFormulario;
+	
+	public FormularioCliente getFormularioCliente() {
+		return formularioCliente;
 	}
-	public void setClienteFormulario(FormularioCliente clienteFormulario) {
-		this.clienteFormulario = clienteFormulario;
+	public void setFormularioCliente(FormularioCliente formularioCliente) {
+		this.formularioCliente = formularioCliente;
 	}
+	
 	public GestorCliente getGestorCliente() {
 		return gestorCliente;
 	}
@@ -41,7 +53,7 @@ public class ClienteControlador {
 	}
 	public void abrirFormularioCliente() {
 		// TODO Auto-generated method stub
-		this.clienteFormulario.setVisible(true);
+		this.formularioCliente.setVisible(true);
 	}
 	public void insertarCliente(String id, String nombre, String direccion, String codPostal, String telefono) {
 		// TODO Auto-generated method stub
@@ -54,6 +66,18 @@ public class ClienteControlador {
 	}
 	public void cerrarFormularioCliente() {
 		// TODO Auto-generated method stub
-		this.clienteFormulario.dispose();
+		this.formularioCliente.dispose();
 	}
+	public void abrirBorradoCliente() {
+		// TODO Auto-generated method stub
+		this.borradoCliente.setVisible(true);
+	}
+	public void rellenarBorradoCliente(String idCliente) {
+		// TODO Auto-generated method stub
+		Cliente cliente = clienteModelo.select(idCliente);
+		this.borradoCliente.rellenarDatosBorradoCliente(cliente);
+	}
+	
 }
+	
+	

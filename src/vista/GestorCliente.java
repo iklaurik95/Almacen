@@ -39,6 +39,7 @@ public class GestorCliente extends JDialog {
 		JButton btnConsulta = new JButton("Consulta");
 		btnConsulta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				clienteControlador.abrirBorradoCliente();
 			}
 		});
 		btnConsulta.setBounds(133, 146, 137, 23);
@@ -48,6 +49,7 @@ public class GestorCliente extends JDialog {
 		lblGestorCliente.setBounds(126, 30, 144, 20);
 		contentPanel.add(lblGestorCliente);
 	}
+	
 	public ClienteControlador getClienteControlador() {
 		return clienteControlador;
 	}
