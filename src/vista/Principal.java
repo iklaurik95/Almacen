@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import controlador.ClienteControlador;
+import controlador.PedidoControlador;
 import controlador.ProductoControlador;
 
 
@@ -22,8 +23,9 @@ public class Principal extends JFrame {
 	private JPanel contentPane;
 	private ClienteControlador clienteControlador;
 	private ProductoControlador productoControlador;
+	private PedidoControlador pedidoControlador;
 
-	
+		
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -58,15 +60,26 @@ public class Principal extends JFrame {
 		contentPane.add(btnGestorCliente);
 		
 		JButton btnGestorProducto = new JButton("Gestor Productos");
-		btnGestorProducto.setBounds(132, 160, 177, 23);
+		btnGestorProducto.setBounds(132, 151, 177, 23);
 		contentPane.add(btnGestorProducto);
 		
 		JLabel lblAlmacen = new JLabel("ALMACEN");
 		lblAlmacen.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 18));
 		lblAlmacen.setBounds(173, 25, 136, 14);
 		contentPane.add(lblAlmacen);
+		
+		JButton btnGestorPedido = new JButton("Gestor Pedidos");
+		btnGestorPedido.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				pedidoControlador.abrirGestorPedido();
+			}
+		});
+		btnGestorPedido.setBounds(127, 203, 182, 23);
+		contentPane.add(btnGestorPedido);
 	}
 	
+	
+
 	public ClienteControlador getSocioControlador() {
 		return clienteControlador;
 	}
@@ -81,5 +94,12 @@ public class Principal extends JFrame {
 
 	public void setProductoControlador(ProductoControlador libroControlador) {
 		this.productoControlador = productoControlador;
+	}
+	public PedidoControlador getPedidoControlador() {
+		return pedidoControlador;
+	}
+
+	public void setPedidoControlador(PedidoControlador pedidoControlador) {
+		this.pedidoControlador = pedidoControlador;
 	}
 }

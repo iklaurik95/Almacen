@@ -11,6 +11,7 @@ public class ProductoControlador {
 	private ProductoModelo productoModelo;
 	private FormularioProducto formularioProducto;
 	private GestorProducto gestorProducto;
+	
 	public Principal getPrincipal() {
 		return principal;
 	}

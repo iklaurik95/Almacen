@@ -1,21 +1,20 @@
 
 package modelo;
 
-	public class Producto {
+import java.util.ArrayList;
+
+public class Producto {
 	//TODO crear atributos getters setters y constructor
-		int existencias;
-		int id;
-		String nombre;
-		double precio;
-		String proveedor;
+		private int existencias;
+		private int id;
+		private String nombre;
+		private double precio;
+		private String proveedor;
+		private ArrayList<DetallePedido> detallePedidos;
 		
 		public Producto() {
 			super();
-			this.existencias = existencias;
-			this.id = id;
-			this.nombre = nombre;
-			this.precio = precio;
-			this.proveedor = proveedor;
+			
 		}
 		
 		public int getExistencias() {
@@ -57,4 +56,13 @@ package modelo;
 		public void setProveedor(String proveedor) {
 			this.proveedor = proveedor;
 		}
+
+		public ArrayList<DetallePedido> getDetallePedidos() {
+			return detallePedidos;
+		}
+
+		public void setDetallePedidos(ArrayList<DetallePedido> detallePedidos) {
+			this.detallePedidos = detallePedidos;
+		}
+
 }

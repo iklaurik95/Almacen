@@ -18,7 +18,6 @@ public class ClienteControlador {
 	private GestorCliente gestorCliente;
 	private BorradoCliente borradoCliente;
 	
-	
 	public BorradoCliente getBorradoCliente() {
 		return borradoCliente;
 	}
@@ -57,8 +56,8 @@ public class ClienteControlador {
 	}
 	public void insertarCliente(String id, String nombre, String direccion, String codPostal, String telefono) {
 		// TODO Auto-generated method stub
-		Cliente cliente = new Cliente(id,nombre,direccion,codPostal,telefono);
-		clienteModelo.insert(cliente);
+		//Cliente cliente = new Cliente(id,nombre,direccion,codPostal,telefono);
+		//clienteModelo.insert(cliente);
 	}
 	public void abrirGestorCliente() {
 		// TODO Auto-generated method stub
