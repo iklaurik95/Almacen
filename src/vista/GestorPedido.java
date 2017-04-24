@@ -36,6 +36,7 @@ public class GestorPedido extends JDialog {
 			JButton btnConsultarPedido = new JButton("Consultar Pedido");
 			btnConsultarPedido.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
+					pedidoControlador.abrirListadoPedido();
 				}
 			});
 			btnConsultarPedido.setBounds(152, 96, 140, 23);
@@ -66,5 +67,5 @@ public class GestorPedido extends JDialog {
 	public void setPedidoControlador(PedidoControlador pedidoControlador) {
 		this.pedidoControlador = pedidoControlador;
 	}
-
+	
 }

@@ -17,7 +17,7 @@ public class ClienteModelo extends Conector{
 			Statement st = this.conexion.createStatement();
 			ResultSet rs = st.executeQuery("select * from clientes");
 			while(rs.next()){
-				//clientes.add(new Cliente(rs.getString("id"),rs.getString("nombre"),rs.getString("direccion"),rs.getString("codPostal"),rs.getString("telefono")));
+				clientes.add(new Cliente(rs.getString("id"),rs.getString("nombre"),rs.getString("direccion"),rs.getString("codPostal"),rs.getString("telefono")));
 			}
 		}catch (SQLException e){
 			e.printStackTrace();
@@ -31,8 +31,8 @@ public class ClienteModelo extends Conector{
 			Statement st = this.conexion.createStatement();
 			ResultSet rs = st.executeQuery("select * from clientes where id='" + idCliente + "'");
 			rs.next();
-			//Cliente cliente = //new Cliente((idCliente), rs.getString("nombre"), rs.getString("direccion"),rs.getString("codPostal"), rs.getString("telefono"));
-			//return cliente;
+			Cliente cliente = new Cliente((idCliente), rs.getString("nombre"), rs.getString("direccion"),rs.getString("codPostal"), rs.getString("telefono"));
+			return cliente;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

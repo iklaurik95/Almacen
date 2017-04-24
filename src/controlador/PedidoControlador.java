@@ -39,6 +39,12 @@ public class PedidoControlador {
 		// TODO Auto-generated method stub
 		this.gestorPedido.setVisible(true);
 	}
+	public void abrirListadoPedido() {
+		// TODO Auto-generated method stub
+		
+		
+		this.listadoPedido.setVisible(true);
+	}
 	
 	
 }

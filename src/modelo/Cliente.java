@@ -10,13 +10,15 @@ public class Cliente {
 	private String codPostal;
 	private String telefono;
 	private ArrayList<Pedido> pedidos;
-	
-	
-	public Cliente() {
+		
+	public Cliente(String id, String nombre, String direccion, String codPostal, String telefono) {
 		super();
-		// TODO Auto-generated constructor stub
+		this.id = id;
+		this.nombre = nombre;
+		this.direccion = direccion;
+		this.codPostal = codPostal;
+		this.telefono = telefono;
 	}
-	
 	public String getId() {
 		return id;
 	}
