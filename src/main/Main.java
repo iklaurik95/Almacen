@@ -4,6 +4,7 @@ import controlador.ClienteControlador;
 import controlador.PedidoControlador;
 import controlador.ProductoControlador;
 import modelo.ClienteModelo;
+import modelo.DetallePedidoModelo;
 import modelo.PedidoModelo;
 import modelo.ProductoModelo;
 import vista.BorradoCliente;
@@ -29,6 +30,7 @@ public class Main {
 		ClienteModelo clienteModelo = new ClienteModelo();
 		ProductoModelo productoModelo = new ProductoModelo();
 		PedidoModelo pedidoModelo = new PedidoModelo();
+		DetallePedidoModelo detallePedidoModelo = new DetallePedidoModelo();
 		
 		//leihoei controladoreak ezarri
 		Principal principal = new Principal();
@@ -56,12 +58,18 @@ public class Main {
 		clienteControlador.setGestorCliente(gestorCliente);
 		clienteControlador.setFormularioCliente(formularioCliente);
 		clienteControlador.setBorradoCliente(borradoCliente);
+		clienteControlador.setClienteModelo(clienteModelo);
+		
 		productoControlador.setPrincipal(principal);
 		productoControlador.setFormularioProducto(formularioProducto);
 		productoControlador.setGestorProducto(gestorProducto);
+		productoControlador.setProductoModelo(productoModelo);
+		
 		pedidoControlador.setPrincipal(principal);
 		pedidoControlador.setGestorPedido(gestorPedido);
 		pedidoControlador.setListadoPedido(listadoPedido);
+		pedidoControlador.setPedidoModelo(pedidoModelo);
+		pedidoControlador.setDetallePedidoModelo(detallePedidoModelo);
 		
 		principal.setVisible(true);
 		

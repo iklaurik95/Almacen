@@ -5,7 +5,7 @@ import java.util.Date;
 
 public class Pedido {
 	private int id;
-	private int idCliente;
+	private String idCliente;
 	private String codPostal;
 	private Date fecha;
 	private Cliente cliente;
@@ -16,18 +16,27 @@ public class Pedido {
 		super();
 	}
 	
+	
 	public int getId() {
 		return id;
 	}
+
+
 	public void setId(int id) {
 		this.id = id;
 	}
-	public int getIdCliente() {
+
+
+	public String getIdCliente() {
 		return idCliente;
 	}
-	public void setIdCliente(int idCliente) {
+
+
+	public void setIdCliente(String idCliente) {
 		this.idCliente = idCliente;
 	}
+
+
 	public String getCodPostal() {
 		return codPostal;
 	}

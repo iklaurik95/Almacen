@@ -1,4 +1,4 @@
-package modelo;
+ package modelo;
 
 
 import java.sql.SQLException;
@@ -59,7 +59,7 @@ public class ClienteModelo extends Conector{
 		}
 	}
 	
-	public ArrayList<Cliente> delete(String idCliente) {
+	public void delete(String idCliente) {
 		try {
 			Statement st = super.getConexion().createStatement();
 			st.execute("DELETE FROM clientes " + "WHERE id= ('" + idCliente + "')");
@@ -67,7 +67,7 @@ public class ClienteModelo extends Conector{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return null;
+		
 	}
 	
 	}

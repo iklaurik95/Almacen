@@ -12,6 +12,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
 import controlador.PedidoControlador;
+import modelo.DetallePedido;
 import modelo.Pedido;
 
 import javax.swing.JTable;
@@ -21,6 +22,8 @@ import javax.swing.JLabel;
 import javax.swing.JScrollBar;
 import javax.swing.JTextField;
 import javax.swing.JList;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class ListadoPedido extends JDialog {
 	
@@ -51,6 +54,13 @@ public class ListadoPedido extends JDialog {
 		contentPanel.setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+			mouseClickedTablaListadoPedido();
+			
+			}
+		});
 		scrollPane.setBounds(20, 41, 208, 124);
 		contentPanel.add(scrollPane);
 		
@@ -122,6 +132,16 @@ public class ListadoPedido extends JDialog {
 		scrollPane_1.setViewportView(tablaPedido);
 	}
 	
+	protected void mouseClickedTablaListadoPedido() {
+		// TODO Auto-generated method stub
+		int lineaSeleccionada = this.tablaListadoPedido.getSelectedRow();
+		
+		int idPedido = (int)this.tablaListadoPedido.getModel().getValueAt(lineaSeleccionada,0);
+		String idCliente = (String)this.tablaListadoPedido.getModel().getValueAt(lineaSeleccionada,1);
+		
+		this.pedidoControlador.detallesPedidoYCliente(idPedido, idCliente);
+	}
+
 	public PedidoControlador getPedidoControlador() {
 		return pedidoControlador;
 	}
@@ -130,19 +150,23 @@ public class ListadoPedido extends JDialog {
 		this.pedidoControlador = pedidoControlador;
 	}
 	
-
-	public void rellenarTablaListadoPedido(Pedido pedido) {
+	public void rellenarTablaListadoPedido(ArrayList<Pedido> pedidos) {
 		// TODO Auto-generated method stub
-//		DefaultTableModel tablaModel = new DefaultTableModel();
-//		tablaModel.setColumnIdentifiers(new Object[] {"ID", "ID CLIENTE","FECHA"});
-//		for(Pedido pedido : pedidos){
-//			tablaModel.addRow(new Object[] {pedido.getId(),pedido.getIdCliente(),pedido.getFecha()});
-//			}
-//				
-//		tablaListadoPedido.setModel(tablaModel);
-//		
-//		TableRowSorter<DefaultTableModel> modeloOrdenado = new TableRowSorter<DefaultTableModel>(tablaModel);
-//		tablaListadoPedido.setRowSorter(modeloOrdenado);
+		DefaultTableModel tablaModel = new DefaultTableModel();
+		tablaModel.setColumnIdentifiers(new Object[] {"ID", "ID CLIENTE","FECHA"});
+		for(Pedido pedido : pedidos){
+			tablaModel.addRow(new Object[] {pedido.getId(),pedido.getIdCliente(),pedido.getFecha()});
+			}
+				
+		tablaListadoPedido.setModel(tablaModel);
+		
+		TableRowSorter<DefaultTableModel> modeloOrdenado = new TableRowSorter<DefaultTableModel>(tablaModel);
+		tablaListadoPedido.setRowSorter(modeloOrdenado);
+	}
+
+	public void rellenarTablaDetallePedidos(ArrayList<DetallePedido> detallePedidos) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

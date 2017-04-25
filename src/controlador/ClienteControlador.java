@@ -76,9 +76,9 @@ public class ClienteControlador {
 		Cliente cliente = clienteModelo.select(idCliente);
 		this.borradoCliente.rellenarDatosBorradoCliente(cliente);
 	}
-	public void eliminarCliente() {
+	public void eliminarCliente(String idCliente) {
 		// TODO Auto-generated method stub
-		//ArrayList<Cliente> clientes = clienteModelo.delete(idCliente);
+		this.clienteModelo.delete(idCliente);
 		
 		
 	}

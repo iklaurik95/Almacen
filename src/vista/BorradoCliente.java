@@ -116,7 +116,8 @@ public class BorradoCliente extends JDialog {
 				JButton btnBorrar = new JButton("Borrar");
 				btnBorrar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
-						clienteControlador.eliminarCliente();
+						
+						clienteControlador.eliminarCliente(textoId.getText());
 					}
 				});
 				btnBorrar.setActionCommand("Borrar");
@@ -156,7 +157,7 @@ public class BorradoCliente extends JDialog {
 		textoCodPostal.setText(cliente.getCodPostal());
 		textoTelefono.setText(cliente.getTelefono());
 	}
-	public void rellenarListaClientes(ArrayList clientes){
+	public void rellenarListaClientes(ArrayList<Cliente> clientes){
 		Iterator<Cliente> iterator = clientes.iterator();
 		while(iterator.hasNext()){
 			Cliente cliente = iterator.next();

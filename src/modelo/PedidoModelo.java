@@ -7,20 +7,22 @@ import java.util.ArrayList;
 
 public class PedidoModelo extends Conector{
 	
-	public Pedido selectAll(){
+	public ArrayList<Pedido> selectAll(){
 		
 		ArrayList<Pedido> pedidos = new ArrayList<Pedido>();
 		try{
 			Statement st = this.conexion.createStatement();
-			ResultSet rs = st.executeQuery("select * from clientes");
+			ResultSet rs = st.executeQuery("select * from pedidos");
 			while(rs.next()){
 				Pedido pedido =  new Pedido();
 				pedido.setId(rs.getInt("id"));
-				pedido.setIdCliente(rs.getInt("idCliente"));
+				pedido.setIdCliente(rs.getString("idCliente"));
 				pedido.setFecha(rs.getDate("fecha"));
 				
-				return pedido;
+				pedidos.add(pedido);
+						
 			}
+			return pedidos;
 		}catch (SQLException e){
 			e.printStackTrace();
 		}

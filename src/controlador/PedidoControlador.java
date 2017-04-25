@@ -1,5 +1,9 @@
 package controlador;
 
+import java.util.ArrayList;
+
+import modelo.DetallePedido;
+import modelo.DetallePedidoModelo;
 import modelo.Pedido;
 import modelo.PedidoModelo;
 import vista.GestorPedido;
@@ -12,6 +16,8 @@ public class PedidoControlador {
 	private PedidoModelo pedidoModelo;
 	private GestorPedido gestorPedido;
 	private ListadoPedido listadoPedido;
+	private DetallePedidoModelo detallePedidoModelo;
+	
 	public Principal getPrincipal() {
 		return principal;
 	}
@@ -20,6 +26,12 @@ public class PedidoControlador {
 	}
 	public PedidoModelo getPedidoModelo() {
 		return pedidoModelo;
+	}
+	public DetallePedidoModelo getDetallePedidoModelo() {
+		return detallePedidoModelo;
+	}
+	public void setDetallePedidoModelo(DetallePedidoModelo detallePedidoModelo) {
+		this.detallePedidoModelo = detallePedidoModelo;
 	}
 	public void setPedidoModelo(PedidoModelo pedidoModelo) {
 		this.pedidoModelo = pedidoModelo;
@@ -42,10 +54,19 @@ public class PedidoControlador {
 	}
 	public void abrirListadoPedido() {
 		// TODO Auto-generated method stub
-		Pedido pedido = pedidoModelo.selectAll();
-		listadoPedido.rellenarTablaListadoPedido(pedido);
+		
+		ArrayList<Pedido> pedidos = this.pedidoModelo.selectAll();
+		listadoPedido.rellenarTablaListadoPedido(pedidos);
 		
 		this.listadoPedido.setVisible(true);
+		
+	}
+	public void detallesPedidoYCliente(int idPedido, String idCliente) {
+		// TODO Auto-generated method stub
+		
+		//idPedidoarekin detallePedido lortu
+		ArrayList<DetallePedido> detallePedidos = this.detallePedidoModelo.selectPorPedido(idPedido);
+		listadoPedido.rellenarTablaDetallePedidos(detallePedidos);
 	}
 	
 	
