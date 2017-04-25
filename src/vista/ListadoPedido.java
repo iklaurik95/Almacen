@@ -2,13 +2,17 @@ package vista;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 import controlador.PedidoControlador;
+import modelo.Pedido;
 
 import javax.swing.JTable;
 import javax.swing.JScrollPane;
@@ -23,7 +27,7 @@ public class ListadoPedido extends JDialog {
 	private PedidoControlador pedidoControlador;
 	
 	private final JPanel contentPanel = new JPanel();
-	private JTable tablaListadoPedidos;
+	private JTable tablaListadoPedido;
 	private JTextField textFieldId;
 	private JTextField textFieldNombre;
 	private JTextField textFieldDireccion;
@@ -50,8 +54,8 @@ public class ListadoPedido extends JDialog {
 		scrollPane.setBounds(20, 41, 208, 124);
 		contentPanel.add(scrollPane);
 		
-		tablaListadoPedidos = new JTable();
-		scrollPane.setViewportView(tablaListadoPedidos);
+		tablaListadoPedido = new JTable();
+		scrollPane.setViewportView(tablaListadoPedido);
 		
 		JLabel lblListadoPedidos = new JLabel("LISTADO PEDIDOS");
 		lblListadoPedidos.setBounds(57, 11, 149, 14);
@@ -125,4 +129,20 @@ public class ListadoPedido extends JDialog {
 	public void setPedidoControlador(PedidoControlador pedidoControlador) {
 		this.pedidoControlador = pedidoControlador;
 	}
+	
+
+	public void rellenarTablaListadoPedido(Pedido pedido) {
+		// TODO Auto-generated method stub
+//		DefaultTableModel tablaModel = new DefaultTableModel();
+//		tablaModel.setColumnIdentifiers(new Object[] {"ID", "ID CLIENTE","FECHA"});
+//		for(Pedido pedido : pedidos){
+//			tablaModel.addRow(new Object[] {pedido.getId(),pedido.getIdCliente(),pedido.getFecha()});
+//			}
+//				
+//		tablaListadoPedido.setModel(tablaModel);
+//		
+//		TableRowSorter<DefaultTableModel> modeloOrdenado = new TableRowSorter<DefaultTableModel>(tablaModel);
+//		tablaListadoPedido.setRowSorter(modeloOrdenado);
+	}
+
 }

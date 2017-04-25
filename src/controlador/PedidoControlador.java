@@ -1,5 +1,6 @@
 package controlador;
 
+import modelo.Pedido;
 import modelo.PedidoModelo;
 import vista.GestorPedido;
 import vista.ListadoPedido;
@@ -41,7 +42,8 @@ public class PedidoControlador {
 	}
 	public void abrirListadoPedido() {
 		// TODO Auto-generated method stub
-		
+		Pedido pedido = pedidoModelo.selectAll();
+		listadoPedido.rellenarTablaListadoPedido(pedido);
 		
 		this.listadoPedido.setVisible(true);
 	}

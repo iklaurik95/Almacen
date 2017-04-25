@@ -9,7 +9,7 @@ public class Pedido {
 	private String codPostal;
 	private Date fecha;
 	private Cliente cliente;
-	private ArrayList<DetallePedido> detallePedido;
+	private ArrayList<DetallePedido> detallePedidos;
 	
 	
 	public Pedido() {
@@ -48,12 +48,12 @@ public class Pedido {
 		this.cliente = cliente;
 	}
 
-	public ArrayList<DetallePedido> getDetallePedido() {
-		return detallePedido;
+	public ArrayList<DetallePedido> getDetallePedidos() {
+		return detallePedidos;
 	}
 
-	public void setDetallePedido(ArrayList<DetallePedido> detallePedido) {
-		this.detallePedido = detallePedido;
+	public void setDetallePedido(ArrayList<DetallePedido> detallePedidos) {
+		this.detallePedidos = detallePedidos;
 	}
 	
 	
