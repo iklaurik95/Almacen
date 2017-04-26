@@ -48,6 +48,15 @@ public class GestorCliente extends JDialog {
 		JLabel lblGestorCliente = new JLabel("Gestor Cliente");
 		lblGestorCliente.setBounds(126, 30, 144, 20);
 		contentPanel.add(lblGestorCliente);
+		
+		JButton btnListadoClientes = new JButton("Listado Clientes");
+		btnListadoClientes.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				clienteControlador.abrirListadoCliente();
+			}
+		});
+		btnListadoClientes.setBounds(133, 201, 137, 23);
+		contentPanel.add(btnListadoClientes);
 	}
 	
 	public ClienteControlador getClienteControlador() {

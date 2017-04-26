@@ -7,6 +7,7 @@ import modelo.ClienteModelo;
 import vista.BorradoCliente;
 import vista.FormularioCliente;
 import vista.GestorCliente;
+import vista.ListadoCliente;
 import vista.Principal;
 
 
@@ -17,6 +18,8 @@ public class ClienteControlador {
 	private FormularioCliente formularioCliente;
 	private GestorCliente gestorCliente;
 	private BorradoCliente borradoCliente;
+	private ListadoCliente listadoCliente;
+	
 	
 	public BorradoCliente getBorradoCliente() {
 		return borradoCliente;
@@ -79,8 +82,17 @@ public class ClienteControlador {
 	public void eliminarCliente(String idCliente) {
 		// TODO Auto-generated method stub
 		this.clienteModelo.delete(idCliente);
-		
-		
+	}
+	
+	public ListadoCliente getListadoCliente() {
+		return listadoCliente;
+	}
+	public void setListadoCliente(ListadoCliente listadoCliente) {
+		this.listadoCliente = listadoCliente;
+	}
+	public void abrirListadoCliente() {
+		// TODO Auto-generated method stub
+		this.listadoCliente.setVisible(true);
 	}
 	
 	

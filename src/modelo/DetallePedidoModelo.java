@@ -14,7 +14,7 @@ public class DetallePedidoModelo extends Conector{
 			Statement st;
 			try {
 				st = this.conexion.createStatement();
-				ResultSet rs = st.executeQuery("SELECT * FROM detallespedidos WHERE id='" + idPedido + "'");
+				ResultSet rs = st.executeQuery("SELECT * FROM detallespedidos WHERE idPedido='" + idPedido + "'");
 				
 				while (rs.next()){
 					DetallePedido detallePedido = new DetallePedido();
@@ -60,6 +60,7 @@ public class DetallePedidoModelo extends Conector{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 		return detallePedidos;
 			
 		

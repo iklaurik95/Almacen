@@ -13,6 +13,7 @@ import vista.FormularioProducto;
 import vista.GestorCliente;
 import vista.GestorPedido;
 import vista.GestorProducto;
+import vista.ListadoCliente;
 import vista.ListadoPedido;
 import vista.Principal;
 
@@ -41,6 +42,7 @@ public class Main {
 		FormularioProducto formularioProducto = new FormularioProducto(gestorProducto,true);
 		BorradoCliente borradoCliente = new BorradoCliente (gestorCliente,true);
 		ListadoPedido listadoPedido = new ListadoPedido(gestorPedido, true);
+		ListadoCliente listadoCliente = new ListadoCliente(gestorCliente,true);
 		
 		//controladoreei modelo eta lehioak ezarri
 		principal.setClienteControlador(clienteControlador);
@@ -53,12 +55,14 @@ public class Main {
 		gestorPedido.setPedidoControlador(pedidoControlador);
 		borradoCliente.setClienteControlador(clienteControlador);
 		listadoPedido.setPedidoControlador(pedidoControlador);
+		listadoCliente.setClienteControlador(clienteControlador);
 		
 		clienteControlador.setPrincipal(principal);
 		clienteControlador.setGestorCliente(gestorCliente);
 		clienteControlador.setFormularioCliente(formularioCliente);
 		clienteControlador.setBorradoCliente(borradoCliente);
 		clienteControlador.setClienteModelo(clienteModelo);
+		clienteControlador.setListadoCliente(listadoCliente);
 		
 		productoControlador.setPrincipal(principal);
 		productoControlador.setFormularioProducto(formularioProducto);

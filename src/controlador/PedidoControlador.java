@@ -69,8 +69,8 @@ public class PedidoControlador {
 		listadoPedido.rellenarTablaDetallePedidosPorPedido(detallePedidos);
 		
 		//idCliente detallePedido lortu
-		detallePedidos = this.detallePedidoModelo.selectPorCliente(idCliente);
-		listadoPedido.rellenarTablaDetallePedidosPorCliente(detallePedidos);
+		//detallePedidos = this.detallePedidoModelo.selectPorCliente(idCliente);
+		//listadoPedido.rellenarTablaDetallePedidosPorCliente(detallePedidos);
 		
 	}
 	

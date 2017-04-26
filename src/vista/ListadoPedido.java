@@ -54,17 +54,15 @@ public class ListadoPedido extends JDialog {
 		contentPanel.setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-			mouseClickedTablaListadoPedido();
-			
-			}
-		});
 		scrollPane.setBounds(20, 41, 208, 124);
 		contentPanel.add(scrollPane);
 		
 		tablaListadoPedido = new JTable();
+		tablaListadoPedido.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent arg0) {
+				mouseClickedTablaListadoPedido();
+				}
+		});
 		scrollPane.setViewportView(tablaListadoPedido);
 		
 		JLabel lblListadoPedidos = new JLabel("LISTADO PEDIDOS");
