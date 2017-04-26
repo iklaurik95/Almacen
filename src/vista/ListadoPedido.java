@@ -36,7 +36,7 @@ public class ListadoPedido extends JDialog {
 	private JTextField textFieldDireccion;
 	private JTextField textField_3;
 	private JTextField textField_4;
-	private JTable tablaPedido;
+	private JTable tablaDetallePedido;
 
 	/**
 	 * Launch the application.
@@ -128,8 +128,8 @@ public class ListadoPedido extends JDialog {
 		scrollPane_1.setBounds(34, 212, 185, 127);
 		contentPanel.add(scrollPane_1);
 		
-		tablaPedido = new JTable();
-		scrollPane_1.setViewportView(tablaPedido);
+		tablaDetallePedido = new JTable();
+		scrollPane_1.setViewportView(tablaDetallePedido);
 	}
 	
 	protected void mouseClickedTablaListadoPedido() {
@@ -164,9 +164,34 @@ public class ListadoPedido extends JDialog {
 		tablaListadoPedido.setRowSorter(modeloOrdenado);
 	}
 
-	public void rellenarTablaDetallePedidos(ArrayList<DetallePedido> detallePedidos) {
+	
+	public void rellenarTablaDetallePedidosPorPedido(ArrayList<DetallePedido> detallePedidos) {
 		// TODO Auto-generated method stub
+		DefaultTableModel tablaModel = new DefaultTableModel();
+		tablaModel.setColumnIdentifiers(new Object [] {"ID PRODUCTO", "CANTIDAD"});
+		for(DetallePedido detallePedido: detallePedidos){
+			tablaModel.addRow(new Object[] {detallePedido.getIdProducto(),detallePedido.getCantidad()});
+		}
 		
+		tablaDetallePedido.setModel(tablaModel);
+		TableRowSorter<DefaultTableModel> modeloOrdenado = new TableRowSorter<DefaultTableModel>(tablaModel);
+		tablaDetallePedido.setRowSorter(modeloOrdenado);	
 	}
 
+	public void rellenarTablaDetallePedidosPorCliente(ArrayList<DetallePedido> detallePedidos) {
+		// TODO Auto-generated method stub
+		DefaultTableModel tablaModel = new DefaultTableModel();
+		tablaModel.setColumnIdentifiers(new Object [] {"ID PEDIDO", "CANTIDAD"});
+		for(DetallePedido detallePedido: detallePedidos){
+			tablaModel.addRow(new Object[] {detallePedido.getIdPedido(),detallePedido.getCantidad()});
+		}
+		
+		tablaDetallePedido.setModel(tablaModel);
+		TableRowSorter<DefaultTableModel> modeloOrdenado = new TableRowSorter<DefaultTableModel>(tablaModel);
+		tablaDetallePedido.setRowSorter(modeloOrdenado);
+		
+		
+		
+	}
+	
 }

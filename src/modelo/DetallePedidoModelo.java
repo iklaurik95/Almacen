@@ -14,7 +14,7 @@ public class DetallePedidoModelo extends Conector{
 			Statement st;
 			try {
 				st = this.conexion.createStatement();
-				ResultSet rs = st.executeQuery("select * FROM detallespedidos WHERE id='" + idPedido + "'");
+				ResultSet rs = st.executeQuery("SELECT * FROM detallespedidos WHERE id='" + idPedido + "'");
 				
 				while (rs.next()){
 					DetallePedido detallePedido = new DetallePedido();
@@ -36,4 +36,33 @@ public class DetallePedidoModelo extends Conector{
 			return detallePedidos;
 
 	}
+	
+	public  ArrayList<DetallePedido> selectPorCliente (String idCliente){
+		
+		ArrayList<DetallePedido> detallePedidos = new ArrayList<DetallePedido>();
+		
+		Statement st;
+		
+		try {
+			st = this.conexion.createStatement();
+			ResultSet rs = st.executeQuery("SELECT * FROM detallespedidos WHERE id='" + idCliente + "'");
+			
+			while(rs.next()){
+				DetallePedido detallePedido = new DetallePedido();
+				
+				detallePedido.setIdPedido(rs.getInt("idPedido"));
+				detallePedido.setIdProducto(rs.getInt("idProducto"));
+				detallePedido.setCantidad(rs.getInt("cantidad"));
+				
+				detallePedidos.add(detallePedido);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return detallePedidos;
+			
+		
+	}
+	
 }
