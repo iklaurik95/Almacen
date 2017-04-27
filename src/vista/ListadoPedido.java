@@ -176,20 +176,6 @@ public class ListadoPedido extends JDialog {
 		tablaDetallePedido.setRowSorter(modeloOrdenado);	
 	}
 
-	public void rellenarTablaDetallePedidosPorCliente(ArrayList<DetallePedido> detallePedidos) {
-		// TODO Auto-generated method stub
-		DefaultTableModel tablaModel = new DefaultTableModel();
-		tablaModel.setColumnIdentifiers(new Object [] {"ID PEDIDO", "CANTIDAD"});
-		for(DetallePedido detallePedido: detallePedidos){
-			tablaModel.addRow(new Object[] {detallePedido.getIdPedido(),detallePedido.getCantidad()});
-		}
-		
-		tablaDetallePedido.setModel(tablaModel);
-		TableRowSorter<DefaultTableModel> modeloOrdenado = new TableRowSorter<DefaultTableModel>(tablaModel);
-		tablaDetallePedido.setRowSorter(modeloOrdenado);
-		
-		
-		
-	}
+	
 	
 }

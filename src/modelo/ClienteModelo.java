@@ -17,7 +17,14 @@ public class ClienteModelo extends Conector{
 			Statement st = this.conexion.createStatement();
 			ResultSet rs = st.executeQuery("select * from clientes");
 			while(rs.next()){
-				clientes.add(new Cliente(rs.getString("id"),rs.getString("nombre"),rs.getString("direccion"),rs.getString("codPostal"),rs.getString("telefono")));
+				Cliente cliente = new Cliente();
+				cliente.setId(rs.getString("id"));
+				cliente.setNombre(rs.getString("nombre"));
+				cliente.setDireccion(rs.getString("direccion"));
+				cliente.setCodPostal(rs.getString("codPostal"));
+				cliente.setTelefono(rs.getString("telefono"));
+				
+				clientes.add(cliente);
 			}
 		}catch (SQLException e){
 			e.printStackTrace();

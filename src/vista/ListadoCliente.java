@@ -7,8 +7,12 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
 
 import controlador.ClienteControlador;
+import modelo.Cliente;
+import modelo.DetallePedido;
+import modelo.Pedido;
 
 import javax.swing.JTable;
 import javax.swing.JScrollPane;
@@ -17,15 +21,16 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 public class ListadoCliente extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
-	private JTable table;
-	private JTable table_1;
+	private JTable tablaListadoClientes;
 	private JTextField textField;
-	private JTable table_2;
+	private JTable tablaDetalles;
 	private ClienteControlador clienteControlador;
+	private JTable tablaPedidos;
 
 	/**
 	 * Launch the application.
@@ -43,29 +48,22 @@ public class ListadoCliente extends JDialog {
 		contentPanel.setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(21, 33, 193, 113);
+		scrollPane.setBounds(21, 33, 276, 131);
 		contentPanel.add(scrollPane);
 		
-		table = new JTable();
-		table.addMouseListener(new MouseAdapter() {
+		tablaListadoClientes = new JTable();
+		tablaListadoClientes.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				
 				tableMouseClicked();
 			}
 		});
-		scrollPane.setViewportView(table);
+		scrollPane.setViewportView(tablaListadoClientes);
 		
 		JLabel lblListadoClientes = new JLabel("LISTADO CLIENTES");
 		lblListadoClientes.setBounds(64, 11, 124, 14);
 		contentPanel.add(lblListadoClientes);
-		
-		JScrollPane scrollPane_1 = new JScrollPane();
-		scrollPane_1.setBounds(26, 200, 191, 92);
-		contentPanel.add(scrollPane_1);
-		
-		table_1 = new JTable();
-		scrollPane_1.setViewportView(table_1);
 		
 		JLabel lblPedidos = new JLabel("PEDIDOS");
 		lblPedidos.setBounds(90, 175, 82, 14);
@@ -84,12 +82,19 @@ public class ListadoCliente extends JDialog {
 		scrollPane_2.setBounds(307, 65, 120, 151);
 		contentPanel.add(scrollPane_2);
 		
-		table_2 = new JTable();
-		scrollPane_2.setViewportView(table_2);
+		JTable tablaDetallesPedido = new JTable();
+		scrollPane_2.setViewportView(tablaDetallesPedido);
 		
 		JLabel lblDetalles = new JLabel("DETALLES");
 		lblDetalles.setBounds(329, 37, 98, 14);
 		contentPanel.add(lblDetalles);
+		
+		JScrollPane scrollPane_1 = new JScrollPane();
+		scrollPane_1.setBounds(21, 212, 193, 96);
+		contentPanel.add(scrollPane_1);
+		
+		tablaPedidos = new JTable();
+		scrollPane_1.setViewportView(tablaPedidos);
 		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
@@ -98,9 +103,11 @@ public class ListadoCliente extends JDialog {
 	}
 	
 	protected void tableMouseClicked() {
+		int lineaSeleccionada = this.tablaListadoClientes.getSelectedRow();
 		
+		String idCliente = (String)this.tablaListadoClientes.getModel().getValueAt(lineaSeleccionada, 0);
 		
-		
+		this.clienteControlador.rellenarTablaPedido(idCliente);
 	}
 
 	public ClienteControlador getClienteControlador() {
@@ -110,5 +117,28 @@ public class ListadoCliente extends JDialog {
 	public void setClienteControlador(ClienteControlador clienteControlador) {
 		this.clienteControlador = clienteControlador;
 	}
-
+	
+	public void rellenarTablaListadoCliente (ArrayList<Cliente> clientes){
+		DefaultTableModel tablaModel = new DefaultTableModel();
+		tablaModel.setColumnIdentifiers(new Object[] {"ID", "NOMBRE","DIRECCION","COD.POSTAL","TELEFONO"});
+		for(Cliente cliente : clientes){
+			tablaModel.addRow(new Object[] {cliente.getId(),cliente.getNombre(),cliente.getDireccion(),cliente.getCodPostal(),
+			cliente.getTelefono()});
+			}
+				
+		tablaListadoClientes.setModel(tablaModel);
+	}
+	
+	
+	public void rellenarTablaPedidoPorCliente(ArrayList<Pedido> pedidos) {
+		// TODO Auto-generated method stub
+		DefaultTableModel tableModel = new DefaultTableModel();
+		tableModel.setColumnIdentifiers(new Object[] {"ID PEDIDO","FECHA"});
+		
+		for(Pedido pedido:pedidos){
+			tableModel.addRow(new Object[]{pedido.getId(),pedido.getFecha()});
+		
+		tablaPedidos.setModel(tableModel);
+	}
+}
 }

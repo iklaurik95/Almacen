@@ -4,6 +4,10 @@ import java.util.ArrayList;
 
 import modelo.Cliente;
 import modelo.ClienteModelo;
+import modelo.DetallePedido;
+import modelo.DetallePedidoModelo;
+import modelo.Pedido;
+import modelo.PedidoModelo;
 import vista.BorradoCliente;
 import vista.FormularioCliente;
 import vista.GestorCliente;
@@ -19,8 +23,15 @@ public class ClienteControlador {
 	private GestorCliente gestorCliente;
 	private BorradoCliente borradoCliente;
 	private ListadoCliente listadoCliente;
+	private PedidoModelo pedidoModelo;
+
 	
-	
+	public PedidoModelo getPedidoModelo() {
+		return pedidoModelo;
+	}
+	public void setPedidoModelo(PedidoModelo pedidoModelo) {
+		this.pedidoModelo = pedidoModelo;
+	}
 	public BorradoCliente getBorradoCliente() {
 		return borradoCliente;
 	}
@@ -92,9 +103,17 @@ public class ClienteControlador {
 	}
 	public void abrirListadoCliente() {
 		// TODO Auto-generated method stub
+		ArrayList<Cliente> clientes = this.clienteModelo.selectAll();
+		listadoCliente.rellenarTablaListadoCliente(clientes);
+		
 		this.listadoCliente.setVisible(true);
 	}
-	
+	public void rellenarTablaPedido(String idCliente) {
+		// TODO Auto-generated method stub
+		ArrayList<Pedido> pedidos = this.pedidoModelo.selectPorCliente(idCliente);
+		
+		listadoCliente.rellenarTablaPedidoPorCliente(pedidos);
+	}
 	
 }
 	

@@ -19,6 +19,10 @@ public class Cliente {
 		this.codPostal = codPostal;
 		this.telefono = telefono;
 	}
+	
+	public Cliente(){
+		super();
+	}
 	public String getId() {
 		return id;
 	}

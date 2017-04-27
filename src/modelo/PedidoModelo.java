@@ -5,6 +5,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+
+
 public class PedidoModelo extends Conector{
 	
 	public ArrayList<Pedido> selectAll(){
@@ -27,5 +29,29 @@ public class PedidoModelo extends Conector{
 			e.printStackTrace();
 		}
 		return null;
+	}
+
+	public ArrayList<Pedido> selectPorCliente(String idCliente) {
+		// TODO Auto-generated method stub
+		
+		ArrayList<Pedido> pedidos = new ArrayList<Pedido>();
+		Statement st;
+		try {
+			st = this.conexion.createStatement();
+			ResultSet rs = st.executeQuery("select * from pedidos WHERE idCliente=" + idCliente + "'");
+			while(rs.next()){
+				Pedido pedido = new Pedido();
+				pedido.setId(rs.getInt("id"));
+				pedido.setFecha(rs.getDate("fecha"));
+				
+				pedidos.add(pedido);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return pedidos;
 	}
 }
