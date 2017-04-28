@@ -1,5 +1,7 @@
 package modelo;
 
+import java.util.ArrayList;
+
 public class DetallePedido {
 	
 	private int idPedido;
@@ -38,5 +40,6 @@ public class DetallePedido {
 	public Producto getProducto() {
 		return producto;
 	}
+
 	
 }

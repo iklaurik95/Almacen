@@ -1,6 +1,7 @@
 package main;
 
 import controlador.ClienteControlador;
+import controlador.DetallePedidoControlador;
 import controlador.PedidoControlador;
 import controlador.ProductoControlador;
 import modelo.ClienteModelo;
@@ -26,6 +27,7 @@ public class Main {
 		ClienteControlador clienteControlador = new ClienteControlador();
 		ProductoControlador productoControlador = new ProductoControlador();
 		PedidoControlador pedidoControlador = new PedidoControlador();
+		DetallePedidoControlador detallePedidoControlador = new DetallePedidoControlador();
 				
 		//lehioak sortu
 		ClienteModelo clienteModelo = new ClienteModelo();
@@ -56,6 +58,7 @@ public class Main {
 		borradoCliente.setClienteControlador(clienteControlador);
 		listadoPedido.setPedidoControlador(pedidoControlador);
 		listadoCliente.setClienteControlador(clienteControlador);
+		listadoCliente.setDetallePedidoControlador(detallePedidoControlador);
 		
 		clienteControlador.setPrincipal(principal);
 		clienteControlador.setGestorCliente(gestorCliente);
@@ -63,6 +66,7 @@ public class Main {
 		clienteControlador.setBorradoCliente(borradoCliente);
 		clienteControlador.setClienteModelo(clienteModelo);
 		clienteControlador.setListadoCliente(listadoCliente);
+		clienteControlador.setPedidoModelo(pedidoModelo);
 		
 		productoControlador.setPrincipal(principal);
 		productoControlador.setFormularioProducto(formularioProducto);
@@ -74,6 +78,10 @@ public class Main {
 		pedidoControlador.setListadoPedido(listadoPedido);
 		pedidoControlador.setPedidoModelo(pedidoModelo);
 		pedidoControlador.setDetallePedidoModelo(detallePedidoModelo);
+		
+		detallePedidoControlador.setListadoCliente(listadoCliente);
+		detallePedidoControlador.setDetallePedidoModelo(detallePedidoModelo);
+		detallePedidoControlador.setProductoModelo(productoModelo);
 		
 		principal.setVisible(true);
 		

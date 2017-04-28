@@ -19,6 +19,7 @@ public class DetallePedidoModelo extends Conector{
 				while (rs.next()){
 					DetallePedido detallePedido = new DetallePedido();
 					
+					detallePedido.setIdPedido(rs.getInt("idPedido"));
 					detallePedido.setIdProducto(rs.getInt("idProducto"));
 					detallePedido.setCantidad(rs.getInt("cantidad"));
 					
@@ -35,6 +36,8 @@ public class DetallePedidoModelo extends Conector{
 			return detallePedidos;
 
 	}
+
+	
 	
 	
 }

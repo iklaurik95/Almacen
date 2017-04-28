@@ -10,6 +10,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
 import controlador.ClienteControlador;
+import controlador.DetallePedidoControlador;
 import modelo.Cliente;
 import modelo.DetallePedido;
 import modelo.Pedido;
@@ -31,6 +32,7 @@ public class ListadoCliente extends JDialog {
 	private JTable tablaDetalles;
 	private ClienteControlador clienteControlador;
 	private JTable tablaPedidos;
+	private DetallePedidoControlador detallePedidoControlador;
 
 	/**
 	 * Launch the application.
@@ -56,7 +58,7 @@ public class ListadoCliente extends JDialog {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				
-				tableMouseClicked();
+				tablaListadoClientesMouseClicked();
 			}
 		});
 		scrollPane.setViewportView(tablaListadoClientes);
@@ -94,6 +96,12 @@ public class ListadoCliente extends JDialog {
 		contentPanel.add(scrollPane_1);
 		
 		tablaPedidos = new JTable();
+		tablaPedidos.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				tablaPedidosMouseClicked();
+			}
+		});
 		scrollPane_1.setViewportView(tablaPedidos);
 		{
 			JPanel buttonPane = new JPanel();
@@ -102,13 +110,36 @@ public class ListadoCliente extends JDialog {
 		}
 	}
 	
-	protected void tableMouseClicked() {
+	
+
+	protected void tablaListadoClientesMouseClicked() {
 		int lineaSeleccionada = this.tablaListadoClientes.getSelectedRow();
 		
 		String idCliente = (String)this.tablaListadoClientes.getModel().getValueAt(lineaSeleccionada, 0);
 		
 		this.clienteControlador.rellenarTablaPedido(idCliente);
 	}
+	
+	protected void tablaPedidosMouseClicked() {
+		// TODO Auto-generated method stub
+		int lineaSeleccionada = this.tablaPedidos.getSelectedRow();
+		
+		int idPedido = (int) this.tablaPedidos.getModel().getValueAt(lineaSeleccionada, 0);
+		
+		this.detallePedidoControlador.rellenarTablaDetalle(idPedido);
+	}
+
+	public DetallePedidoControlador getDetallePedidoControlador() {
+		return detallePedidoControlador;
+	}
+
+
+
+	public void setDetallePedidoControlador(DetallePedidoControlador detallePedidoControlador) {
+		this.detallePedidoControlador = detallePedidoControlador;
+	}
+
+
 
 	public ClienteControlador getClienteControlador() {
 		return clienteControlador;
@@ -134,11 +165,25 @@ public class ListadoCliente extends JDialog {
 		// TODO Auto-generated method stub
 		DefaultTableModel tableModel = new DefaultTableModel();
 		tableModel.setColumnIdentifiers(new Object[] {"ID PEDIDO","FECHA"});
-		
+		 
 		for(Pedido pedido:pedidos){
 			tableModel.addRow(new Object[]{pedido.getId(),pedido.getFecha()});
 		
+			
+		}
 		tablaPedidos.setModel(tableModel);
+	}	
+
+	public void rellenarTablaDetallesPedido(ArrayList<DetallePedido> detallePedidos) {
+		// TODO Auto-generated method stub
+		DefaultTableModel tableModel = new DefaultTableModel();
+		tableModel.setColumnIdentifiers(new Object[] {"NOMBRE","EXISTENCIAS","PRECIO"});
+		
+		for(DetallePedido detallePedido:detallePedidos){
+			tableModel.addRow(new Object[] {detallePedido.getProducto().getNombre(),detallePedido.getProducto().getExistencias(),detallePedido.getProducto().getPrecio()});
+		}
+		
+		tablaDetalles.setModel(tableModel);
 	}
-}
+	
 }

@@ -46,6 +46,11 @@ public class ProductoModelo extends Conector{
 	public void insert(Producto producto) {
 		//TODO produktuaren insert egiten du
 	}
+
+	public Producto select(String nombre) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 
 	

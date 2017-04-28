@@ -175,6 +175,10 @@ public class ListadoPedido extends JDialog {
 		TableRowSorter<DefaultTableModel> modeloOrdenado = new TableRowSorter<DefaultTableModel>(tablaModel);
 		tablaDetallePedido.setRowSorter(modeloOrdenado);	
 	}
+	
+	
+	
+	
 
 	
 	

@@ -111,8 +111,11 @@ public class ClienteControlador {
 	public void rellenarTablaPedido(String idCliente) {
 		// TODO Auto-generated method stub
 		ArrayList<Pedido> pedidos = this.pedidoModelo.selectPorCliente(idCliente);
-		
 		listadoCliente.rellenarTablaPedidoPorCliente(pedidos);
+	}
+	public void rellenarTablaDetalle(int idPedido) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }

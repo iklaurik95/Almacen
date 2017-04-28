@@ -38,7 +38,7 @@ public class PedidoModelo extends Conector{
 		Statement st;
 		try {
 			st = this.conexion.createStatement();
-			ResultSet rs = st.executeQuery("select * from pedidos WHERE idCliente=" + idCliente + "'");
+			ResultSet rs = st.executeQuery("select * from pedidos WHERE idCliente='" + idCliente + "'");
 			while(rs.next()){
 				Pedido pedido = new Pedido();
 				pedido.setId(rs.getInt("id"));
@@ -47,11 +47,13 @@ public class PedidoModelo extends Conector{
 				pedidos.add(pedido);
 			}
 			
+			return pedidos;
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		return pedidos;
+		return null;
 	}
 }
